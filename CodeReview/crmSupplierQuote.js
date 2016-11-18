@@ -7,6 +7,28 @@
   crmSupplierQuote-list.html 页面
 */
 
+
+/*
+  给 inp 绑定 "验证输入数字" 事件函数
+  总共在2处调用
+    1. loadData 中调用 _fillData，填充完页面内容后
+    2. 在 crmSupplierQuote-add-modal.html 中执行 add() 过程中，完成对 list 页面的 "tr" 插入后
+*/
+function inp_bind_event() {
+  $("input[name='inp_cqn']").each(function(index, e){
+    // /^\d+(\.\d{1,2})?/  在RegExp中 ‘ \ ’ 需要进行转义
+    var re = new RegExp("^\\d+(\\.\\d{1,2})?");
+    // 在粘贴、鼠标移开、失焦情况下，进行验证
+    $(this).on("paste mouseleave blur", function() {
+      if($(this).val() != "")
+        if(re.exec($(this).val()) != null)
+          $(this).val(re.exec($(this).val())[0]);
+        else
+          $(this).val("");
+    });
+  });
+}
+
 /*
   remove 去掉在执行 add() 后插入的对应 id 的 tr
   这里按理来说应该添加 break ，提升代码效率
