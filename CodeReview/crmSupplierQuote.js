@@ -7,6 +7,10 @@
   crmSupplierQuote-list.html 页面
 */
 
+/*
+  对于几个全局变量的说明
+*/
+var prod_has_list = [];
 
 /*
   给 inp 绑定 "验证输入数字" 事件函数
