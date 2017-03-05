@@ -25,15 +25,51 @@ console.log(Switch.get_s());               // string secret
 console.log(Switch.set_s("new st"));       // new st
 console.log(Switch.get_s());               // new st
 
+Switch = null; // recycle
 
 /* -------- Exp2 -------- */
 
+function createFunc() {
+  var result = new Array();
+  for (var i = 0; i < 10; i++) {
+    result[i] = function() {
+      return i;
+    };
+  }
+  return result;
+}
 
+var res = createFunc();
 
+// console.log(res[0]());  // 10
+// console.log(res[2]());  // 10
+// console.log(res[9]());  // 10
+// of course
 
+function createFunc() {
+  var result = new Array();
+  for (var i = 0; i < 10; i++) {
+    result[i] = function(num) {
+      return function() {
+        return num;
+      };
+    }(i);
+  }
+  return result;
+}
 
+res = createFunc();
 
+console.log(res[0]());  // 0
+console.log(res[2]());  // 2
+console.log(res[9]());  // 9
 
+var tmp = function (num) {
+  return function() {
+    return num;
+  };
+} (7);
+console.log(tmp);     // 7
 
 
 /* ======== Main End ======== */
@@ -44,3 +80,5 @@ console.log("this script last: " + (stop_time - start_time) + "s");
 
 start_time = null;
 stop_time = null;
+
+
