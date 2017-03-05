@@ -69,8 +69,40 @@ var tmp = function (num) {
     return num;
   };
 } (7);
-console.log(tmp);     // 7
+console.log(tmp());     // 7
 
+
+/* -------- Exp3 private variable -------- */
+(function() {
+
+  var name = "";
+
+  Person = function(value) {
+    name = value;
+  };
+
+  Person.prototype.getName = function() {
+    return name;
+  };
+
+  Person.prototype.setName = function(value) {
+    name = value;
+  };
+
+}) ();
+
+// var Person = function(value) {
+//   var name = value;
+// };
+
+var p1 = new Person("p1");
+console.log(typeof p1);
+console.log(p1);
+console.log(p1.getName());
+
+var p2 = new Person("p2");
+console.log(p1.getName());
+console.log(p1.getName());
 
 /* ======== Main End ======== */
 
