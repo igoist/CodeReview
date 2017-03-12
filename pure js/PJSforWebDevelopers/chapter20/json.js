@@ -15,7 +15,7 @@ console.log(list);
 
 
 
-var jsonText = JSON.stringify(obj);
+var jsonText = JSON.stringify(obj, null, 2);
 // 过滤用
 var jsonText2 = JSON.stringify(obj, ["title"]);
 
