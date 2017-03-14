@@ -126,6 +126,159 @@ var start_time = Date.now();
 // p2.sayName();
 // p1.sayName();
 
+// 6.3 继承 inherit
+// 6.3.1 原型链
+
+// function SuperType() {
+//   this.property = true;
+// }
+
+// SuperType.prototype.arg = "arg test";
+
+// SuperType.prototype.getSuperValue = function() {
+//   console.log("in getSuperValue: " + this.property);
+//   return this.property;
+// };
+
+// function SubType() {
+//   this.subproperty = false;
+// }
+
+// SubType.prototype = new SuperType();
+
+// SubType.prototype.getSubValue = function() {
+//   console.log("in getSubValue: " + this.subproperty);
+//   console.log("SuperType.prototype.arg: " + this.arg);
+//   console.log("SuperType.prototype.property: " + this.property);
+//   return this.subproperty;
+// };
+
+// SubType.prototype.getSuperValue = function() {
+//   console.log("Here !");
+//   return this.property;
+// };
+
+// var instance = new SubType();
+// instance.getSubValue();
+// instance.getSuperValue();
+
+// console.log(SuperType.prototype);
+// SuperType.prototype.getSuperValue();  // 此时未定义
+// console.log(instance instanceof Object);
+// console.log(instance instanceof SubType);
+// console.log(instance instanceof SuperType);
+
+// console.log(Object.prototype.isPrototypeOf(instance));
+// console.log(SuperType.prototype.isPrototypeOf(instance));
+// console.log(SubType.prototype.isPrototypeOf(instance));
+
+
+
+var n = new Number(12);
+n.p = "d";
+console.log(n);
+console.log(n.p);
+
+
+// p167 借用构造函数
+// p168 组合继承
+
+// function SuperType(name) {
+//   this.name = name;
+//   this.colors = ["r", "g", "b"];
+// }
+
+// SuperType.prototype.say = function() {
+//   console.log(this.name);
+// };
+
+// function SubType(name, age) {
+//   SuperType.call(this, name);
+//   this.age = age;
+// }
+
+// SubType.prototype = new SuperType();
+
+// SubType.prototype.sayAge = function() {
+//   console.log(this.age);
+// };
+
+// var instance1 = new SubType("xtz", 23);
+// instance1.colors.push("b");
+// console.log(instance1.colors);
+// instance1.say();
+// instance1.sayAge();
+
+// var instance2 = new SubType("et", 22);
+// instance2.colors.push("c");
+// console.log(instance2.colors);
+// instance2.say();
+// instance2.sayAge();
+
+// p169 原型式继承
+
+function object(o) {
+  function F() {}
+  F.prototype = o;
+  return new F();
+}
+
+// p171 寄生式继承
+
+// function createAnother(original) {
+//   var clone = object(original);
+//   clone.sayHi = function() {
+//     console.log("Hi !");
+//   };
+//   return clone;
+// }
+
+// var person = {
+//   name: "xtz",
+//   friends: ["aa", "bb", "cc"]
+// };
+
+// var anotherPerson = createAnother(person);
+
+// anotherPerson.sayHi();
+// console.log(anotherPerson.name);
+// console.log(anotherPerson.friends);
+
+// p172 寄生组合式
+
+function inheritPrototype(subType, superType) {
+  var prototype = object(superType.prototype); // Object.Create
+  prototype.constructor = subType;
+  subType.prototype = prototype;
+}
+
+function SuperType(name) {
+  this.name = name;
+  this.colors = ["r", "g", "b"];
+}
+
+SuperType.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+function SubType(name, age) {
+  SuperType.call(this, name);
+  this.age = age;
+}
+
+inheritPrototype (SubType, SuperType);
+
+SubType.prototype.sayAge = function() {
+  console.log(this.age);
+};
+
+// SubType.prototype.sayAge();
+
+var instance = new SubType("Me", 22);
+console.log(instance.name);
+console.log(instance.colors);
+instance.sayAge();
+
 /* ======== Main End ======== */
 
 var stop_time = Date.now();
