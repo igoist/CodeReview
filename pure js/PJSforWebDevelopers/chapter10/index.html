@@ -31,6 +31,14 @@
     <li>item 2</li>
     <li>item 3</li>
   </ul>
-  <script src="./dom.js" type="text/javascript"></script>
+
+  <div id="ddv">HHHH<div></div>BBBB& > < </div>
+  <!-- <script src="./dom.js" type="text/javascript"></script> -->
+  <script type="text/javascript">
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "./dom.js";
+    document.body.appendChild(script);
+  </script>
 </body>
 </html>
