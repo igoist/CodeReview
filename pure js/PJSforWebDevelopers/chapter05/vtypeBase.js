@@ -61,6 +61,32 @@ console.log(text.split(","));
 console.log(text.split(",", 2));
 console.log(text.split(/[^\,]+/));
 
+// console.log(String.fromCharCode(65));
+// console.log(String.anchor("aaa"));  // negative exp
+// console.log("String".anchor("aa")); // right usage
+
+// 5.7
+
+// var uri = "http://www.wrox.com/illegal value.html#start";
+
+// console.log(encodeURI(uri));
+// console.log(decodeURI(encodeURI(uri)) == uri);
+// console.log(encodeURIComponent(uri));
+// console.log(decodeURIComponent(encodeURIComponent(uri)) == uri);
+
+// console.log(Math.LOG10E);
+
+var selectionFrom = function(lowerValue, upperValue) {
+  var choices = upperValue - lowerValue + 1;
+  return Math.floor(Math.random() * choices + lowerValue);
+};
+
+console.log(selectionFrom(2, 10));
+// console.log(selectionFrom);
+
+
+
+
 
 /* ======== Main End ======== */
 

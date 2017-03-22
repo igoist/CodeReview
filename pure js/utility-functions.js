@@ -58,3 +58,24 @@ window.onload = function() {
 document.onload = function() {
   console.log('document - onload'); // DOES NOT HAPPEN
 };
+
+
+// 先不参考其它现有的库，自己实现看看这类的 DOM 操作，先用返回 string 的方法 —— 后面估计要用到 bind
+
+function addClassString(ec, _class) {
+  var classNames = ec.split(/\s+/);
+  classNames[classNames.length] = _class;
+
+  return (classNames.join(" "));
+}
+
+function removeClassString(ec, _class) {
+  var classNames = ec.split(/\s+/);
+  for (var i = 0; i < classNames.length; i++) {
+    if (classNames[i] == _class) {
+      classNames.splice(i, 1);
+      break;
+    }
+  }
+  return (classNames.join(" "));
+}
