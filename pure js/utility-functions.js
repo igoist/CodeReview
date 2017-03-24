@@ -61,7 +61,7 @@ document.onload = function() {
 
 
 // 先不参考其它现有的库，自己实现看看这类的 DOM 操作，先用返回 string 的方法 —— 后面估计要用到 bind
-
+// 负面教材!!
 function addClassString(ec, _class) {
   var classNames = ec.split(/\s+/);
   classNames[classNames.length] = _class;
