@@ -27,11 +27,49 @@ svg.namespaceURI;
 
 
 
+document.implementation.hasFeature("CSS", "2.0");
+document.implementation.hasFeature("CSS2", "2.0");
+document.implementation.hasFeature("CSS3", "2.0");
 
 
+// 属性获取
+// t.style.item(2) || t.style[2]
+// var prop = t.style.item(2)
+// t.style.getPropertyValue(prop)
+
+// 创建 & 删除
+// document.styleSheets[1].insertRule("header h1 { color: #cfc !important; }", 0);
+// document.styleSheets[1].deleteRule(0)
+
+// 样式的计算
+var a = document.querySelector(".corner-a");
+document.defaultView.getComputedStyle(a); // 第二个参数是伪元素字符串，如：":after"、":hover"，当然也可省略 - 即为null
 
 
+// 12.2.3 元素大小
+// 偏移量
 
+function getElementLeft(e) {
+  var actualLeft = e.offsetLeft;
+  var current = e.offsetParent;
+
+  while (current !== null) {
+    actualLeft += current.offsetLeft;
+    current = current.offsetParent;
+  }
+  return actualLeft;
+}
+
+function getElementTop(e) {
+  var actualTop = e.offsetTop;
+  var current = e.offsetParent;
+
+  while (current !== null) {
+    actualTop += current.offsetTop;
+    current = current.offsetParent;
+  }
+  return actualTop;
+}
 
 
 

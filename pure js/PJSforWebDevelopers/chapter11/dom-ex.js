@@ -17,11 +17,12 @@ var start_time = Date.now();
 // }
 
 
+// scrollIntoView()
 
+// Mac Chrome 运行下面这行会导致 tmpL[0] 下面原来的所有子节点被删除
+// tmpL[0].innerText = "THHH"
 
-
-
-
+// 这第 11 章，基本上，Selector API、Element Traversal 元素遍历、写入 HTML5 的相关扩展 & 各浏览器厂商的些个专有扩展
 
 
 
